@@ -1,12 +1,6 @@
 package builder.pattern;
 
-/**
- * Concrete Builder for creating a Gaming Computer representation.
- * Implements the ComputerBuilder interface with method chaining.
- * Holds the computer specifications as fields and builds the Computer object at the end.
- */
 public class GamingComputerBuilder implements ComputerBuilder {
-    // Fields to hold computer specifications
     private String cpu;
     private int ramSizeGB;
     private String storageType;
@@ -17,17 +11,10 @@ public class GamingComputerBuilder implements ComputerBuilder {
     private String operatingSystem;
     private double weightKg;
 
-    /**
-     * Constructor initializes with default values for a gaming computer.
-     */
     public GamingComputerBuilder() {
         reset();
     }
 
-    /**
-     * Resets the builder to start building a fresh computer.
-     * Sets default values appropriate for a gaming computer.
-     */
     public void reset() {
         this.cpu = "Intel Core i9-13900K";
         this.ramSizeGB = 32;
@@ -96,7 +83,6 @@ public class GamingComputerBuilder implements ComputerBuilder {
 
     @Override
     public Computer build() {
-        // Validate required fields
         if (cpu == null || cpu.isEmpty()) {
             throw new IllegalStateException("CPU cannot be null or empty");
         }
@@ -113,7 +99,6 @@ public class GamingComputerBuilder implements ComputerBuilder {
             throw new IllegalStateException("Weight must be positive");
         }
 
-        // Create and return the Computer object
         return new Computer(cpu, ramSizeGB, storageType, storageSizeGB,
                            gpu, hasWiFi, hasBluetooth, operatingSystem, weightKg);
     }

@@ -1,15 +1,6 @@
 package builder.pattern;
 
-/**
- * Director class that orchestrates the build sequence for known/reusable configurations.
- * This is optional but encouraged as per the assignment requirements.
- */
 public class ComputerDirector {
-    /**
-     * Constructs a high-end gaming computer using the provided builder.
-     * @param builder the builder to use for construction
-     * @return the built computer
-     */
     public Computer buildHighEndGamingComputer(ComputerBuilder builder) {
         builder.setCpu("Intel Core i9-14900K")
                .setRamSizeGB(64)
@@ -23,11 +14,6 @@ public class ComputerDirector {
         return builder.build();
     }
 
-    /**
-     * Constructs a budget office computer using the provided builder.
-     * @param builder the builder to use for construction
-     * @return the built computer
-     */
     public Computer buildBudgetOfficeComputer(ComputerBuilder builder) {
         builder.setCpu("AMD Ryzen 5 5600G")
                .setRamSizeGB(8)
@@ -41,11 +27,6 @@ public class ComputerDirector {
         return builder.build();
     }
 
-    /**
-     * Constructs a portable laptop using the provided builder.
-     * @param builder the builder to use for construction
-     * @return the built computer
-     */
     public Computer buildPortableLaptop(ComputerBuilder builder) {
         builder.setCpu("Apple M2 Pro")
                .setRamSizeGB(16)

@@ -1,8 +1,5 @@
 # Builder Pattern Assignment - Computer Builder
 
-## Course: ShP-2216 – Software Design Patterns (OP 6B06102)
-## Institution: Astana IT University — School of Computer Engineering
-
 ### Overview
 This project implements the Builder creational design pattern in Java to construct Computer objects with different representations (Gaming Computer, Office Computer, etc.). The Builder pattern allows for step-by-step construction of complex objects and provides a clean API for creating objects with many optional parameters.
 

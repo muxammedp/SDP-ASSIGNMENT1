@@ -1,28 +1,16 @@
 package builder.pattern;
 
-/**
- * Product class representing a complex object being built.
- * In this case, a Computer with various components.
- * This class is immutable - all fields are final and set only via constructor.
- */
 public class Computer {
-    // Required components
     private final String cpu;
     private final int ramSizeGB;
     private final String storageType;
     private final int storageSizeGB;
-
-    // Optional components
     private final String gpu;
     private final boolean hasWiFi;
     private final boolean hasBluetooth;
     private final String operatingSystem;
     private final double weightKg;
 
-    /**
-     * Constructor - package private so only builders in same package can instantiate.
-     * All fields are final to ensure immutability.
-     */
     Computer(String cpu, int ramSizeGB, String storageType, int storageSizeGB,
              String gpu, boolean hasWiFi, boolean hasBluetooth,
              String operatingSystem, double weightKg) {
@@ -37,7 +25,6 @@ public class Computer {
         this.weightKg = weightKg;
     }
 
-    // Getters for all fields (no setters - immutable object)
     public String getCpu() {
         return cpu;
     }

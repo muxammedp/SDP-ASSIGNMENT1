@@ -1,14 +1,9 @@
 package builder.pattern;
 
-/**
- * Client class that demonstrates the Builder pattern.
- * Exercises the builders and shows the resulting products.
- */
 public class Client {
     public static void main(String[] args) {
         System.out.println("=== Builder Pattern Demo ===\n");
 
-        // Demonstrate using concrete builders directly
         System.out.println("1. Using Concrete Builders Directly:");
         System.out.println("   Building a Gaming Computer:");
         GamingComputerBuilder gamingBuilder = new GamingComputerBuilder();
@@ -22,7 +17,6 @@ public class Client {
         System.out.println("   " + officeComputer);
         System.out.println();
 
-        // Demonstrate method chaining (fluent API)
         System.out.println("2. Using Method Chaining (Fluent API):");
         System.out.println("   Customizing a Gaming Computer:");
         Computer customGaming = new GamingComputerBuilder()
@@ -39,7 +33,6 @@ public class Client {
         System.out.println("   " + customGaming);
         System.out.println();
 
-        // Demonstrate using Director
         System.out.println("3. Using Director for Known Configurations:");
         ComputerDirector director = new ComputerDirector();
 
@@ -57,15 +50,14 @@ public class Client {
 
         System.out.println("   Portable Laptop (via Director):");
         Computer laptop = director.buildPortableLaptop(
-                new OfficeComputerBuilder()); // Using office builder as base
+                new OfficeComputerBuilder());
         System.out.println("   " + laptop);
         System.out.println();
 
-        // Demonstrate validation
         System.out.println("4. Demonstrating Validation:");
         try {
             new GamingComputerBuilder()
-                    .setCpu("") // Invalid: empty CPU
+                    .setCpu("")
                     .setRamSizeGB(16)
                     .setStorageType("SSD")
                     .setStorageSizeGB(512)
