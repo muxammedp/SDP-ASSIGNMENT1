@@ -110,37 +110,37 @@ Computer laptop = director.buildPortableLaptop(
 
 ### UML Class Diagram
 ```
-+----------------+       +------------------+       +-------------------------+
-|    Computer    |<>-----|  ComputerBuilder |       |  GamingComputerBuilder  |
-+----------------+       +------------------+       +-------------------------+
-| -cpu: String   |       | +setCpu(): CB    |       | +setCpu(): CB           |
-| -ramSizeGB: int|       | +setRamSizeGB(): CB|     | +setRamSizeGB(): CB     |
-| -storageType:  |       | +setStorageType(): CB|   | +setStorageType(): CB   |
-|   String       |       | +setStorageSizeGB(): CB| | +setStorageSizeGB(): CB |
-| -storageSizeGB:int|    | +setGpu(): CB      |     | +setGpu(): CB           |
-| -gpu: String   |       | +setHasWiFi(): CB  |     | +setHasWiFi(): CB       |
-| -hasWiFi: bool |       | +setHasBluetooth():CB|   | +setHasBluetooth():CB   |
-| -hasBluetooth:bool|   | +setOperatingSystem():CB| | +setOperatingSystem():CB|
-| -os: String    |       | +setWeightKg(): CB |     | +setWeightKg(): CB      |
-| -weightKg: double|    | +build(): Computer |     | +build(): Computer      |
-+----------------+       +------------------+       +-------------------------+
-        ^                         ^                         ^
-        |                         |                         |
-        |                         |                         |
-+----------------+       +------------------+       +-------------------------+
-|OfficeComputerBuilder|       | ComputerDirector |       |         Client        |
-+----------------+       +------------------+       +-------------------------+
-| +setCpu(): CB    |       | +buildHighEndGamingComputer(): Computer |
-| +setRamSizeGB(): CB|       | +buildBudgetOfficeComputer(): Computer|
-| +setStorageType(): CB|     | +buildPortableLaptop(): Computer      |
-| +setStorageSizeGB(): CB|                          |
-| +setGpu(): CB      |                          |
-| +setHasWiFi(): CB    |                          |
-| +setHasBluetooth():CB|                          |
-| +setOperatingSystem():CB|                      |
-| +setWeightKg(): CB   |                          |
-| +build(): Computer   |                          |
-+----------------+       +------------------+       +-------------------------+
++-------------------+    +---------------------------+    +-------------------------------+
+|     Computer      |<>--|      ComputerBuilder      |<>--| GamingComputerBuilder         |
++-------------------+    +---------------------------+    +-------------------------------+
+| -cpu: String      |    | +setCpu(cpu): CB          |    | +setCpu(cpu): CB              |
+| -ramSizeGB: int   |    | +setRamSizeGB(r): CB      |    | +setRamSizeGB(r): CB          |
+| -storageType: S   |    | +setStorageType(s): CB    |    | +setStorageType(s): CB        |
+| -storageSizeGB:i  |    | +setStorageSizeGB(g): CB  |    | +setStorageSizeGB(g): CB      |
+| -gpu: String      |    | +setGpu(gpu): CB          |    | +setGpu(gpu): CB              |
+| -hasWiFi: bool    |    | +setHasWiFi(w): CB        |    | +setHasWiFi(w): CB            |
+| -hasBluetooth:b   |    | +setHasBluetooth(b): CB   |    | +setHasBluetooth(b): CB       |
+| -operatingSystem:S|    | +setOperatingSystem(o): CB|    | +setOperatingSystem(o): CB    |
+| -weightKg: double |    | +setWeightKg(w): CB       |    | +setWeightKg(w): CB           |
+| +build(): Comp.   |    | +build(): Comp.           |    | +build(): Comp.               |
++-------------------+    +---------------------------+    +-------------------------------+
+        ^                          ^                            ^
+        |                          |                            |
+        |                          |                            |
++--------------------------+    +-------------------------------------+    +------------------+
+|OfficeComputerBuilder     |    |         ComputerDirector            |    |     Client       |
++--------------------------+    +-------------------------------------+    +------------------+
+| +setCpu(cpu):CB          |    | +buildHighEndGamingComputer(b):Comp.|    | +main(args):void |
+| +setRamSizeGB(r):CB      |    | +buildBudgetOfficeComputer(b):Comp. |    |                  |
+| +setStorageType(s):CB    |    | +buildPortableLaptop(b):Comp.       |    +------------------+              
+| +setStorageSizeGB(g):CB  |    |                                     |                   
+| +setGpu(gpu):CB          |    +-------------------------------------+                 
+| +setHasWiFi(w):CB        |                                             
+| +setHasBluetooth(b):CB   |                                                            
+| +setOperatingSystem(o):CB|                                                            
+| +setWeightKg(w):CB       |                                                            
+| +build(): Comp.          |                                                            
++--------------------------+                                   
 
 Note: CB = ComputerBuilder return type for fluent API
 ```
