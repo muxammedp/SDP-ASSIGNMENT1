@@ -38,6 +38,8 @@ public class Client {
         String typeChoice = scanner.nextLine();
         ComputerBuilder builder;
         String typeName;
+        String laptopChoice = null; // for laptop subchoice
+
         switch (typeChoice) {
             case "1":
                 builder = new GamingComputerBuilder();
@@ -48,8 +50,33 @@ public class Client {
                 typeName = "Office PC";
                 break;
             case "3":
-                builder = new OfficeComputerBuilder(); // laptop uses office builder as base
-                typeName = "Laptop";
+                // Laptop submenu
+                System.out.println("\nSelect laptop type:");
+                System.out.println("1. High end laptop");
+                System.out.println("2. Office laptop");
+                System.out.println("3. Macbook");
+                System.out.print("Enter choice (1-3): ");
+                System.out.flush();
+                laptopChoice = scanner.nextLine();
+                switch (laptopChoice) {
+                    case "1":
+                        builder = new GamingComputerBuilder();
+                        typeName = "High end laptop";
+                        break;
+                    case "2":
+                        builder = new OfficeComputerBuilder();
+                        typeName = "Office laptop";
+                        break;
+                    case "3":
+                        builder = new OfficeComputerBuilder();
+                        typeName = "Macbook";
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Defaulting to Office laptop.");
+                        System.out.flush();
+                        builder = new OfficeComputerBuilder();
+                        typeName = "Office laptop";
+                }
                 break;
             default:
                 System.out.println("Invalid choice. Defaulting to Office PC.");
@@ -70,12 +97,29 @@ public class Client {
             // Use director for predefined
             ComputerDirector director = new ComputerDirector();
             Computer computer;
+            // Determine which director method to call based on original typeChoice and laptopChoice
             if (typeChoice.equals("1")) {
                 computer = director.buildHighEndGamingComputer(builder);
             } else if (typeChoice.equals("2")) {
                 computer = director.buildBudgetOfficeComputer(builder);
             } else { // laptop
-                computer = director.buildPortableLaptop(builder);
+                if (laptopChoice == null) {
+                    laptopChoice = "2"; // default
+                }
+                switch (laptopChoice) {
+                    case "1": // high end laptop
+                        computer = director.buildHighEndGamingComputer(builder);
+                        break;
+                    case "2": // office laptop
+                        computer = director.buildBudgetOfficeComputer(builder);
+                        break;
+                    case "3": // macbook
+                        computer = director.buildPortableLaptop(builder);
+                        break;
+                    default:
+                        // fallback
+                        computer = director.buildBudgetOfficeComputer(builder);
+                }
             }
             System.out.println("\nYour " + typeName + ":");
             System.out.println(computer);
