@@ -124,9 +124,9 @@ Computer laptop = director.buildPortableLaptop(
 | -weightKg: double |    | +setWeightKg(w): CB       |    | +setWeightKg(w): CB           |
 | +build(): Comp.   |    | +build(): Comp.           |    | +build(): Comp.               |
 +-------------------+    +---------------------------+    +-------------------------------+
-        ^                          ^                            ^
-        |                          |                            |
-        |                          |                            |
+        ^                          ^                                         ^
+        |                          |                                         |
+        |                          |                                         |
 +--------------------------+    +-------------------------------------+    +------------------+
 |OfficeComputerBuilder     |    |         ComputerDirector            |    |     Client       |
 +--------------------------+    +-------------------------------------+    +------------------+
