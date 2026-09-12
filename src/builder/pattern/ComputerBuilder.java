@@ -11,4 +11,15 @@ public interface ComputerBuilder {
     ComputerBuilder setOperatingSystem(String operatingSystem);
     ComputerBuilder setWeightKg(double weightKg);
     Computer build();
+
+    // Getters for current state
+    String getCpu();
+    int getRamSizeGB();
+    String getStorageType();
+    int getStorageSizeGB();
+    String getGpu();
+    boolean isHasWiFi();
+    boolean isHasBluetooth();
+    String getOperatingSystem();
+    double getWeightKg();
 }

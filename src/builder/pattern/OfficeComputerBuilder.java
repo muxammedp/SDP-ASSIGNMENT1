@@ -102,4 +102,50 @@ public class OfficeComputerBuilder implements ComputerBuilder {
         return new Computer(cpu, ramSizeGB, storageType, storageSizeGB,
                            gpu, hasWiFi, hasBluetooth, operatingSystem, weightKg);
     }
+
+    // Getters for current state
+    @Override
+    public String getCpu() {
+        return cpu;
+    }
+
+    @Override
+    public int getRamSizeGB() {
+        return ramSizeGB;
+    }
+
+    @Override
+    public String getStorageType() {
+        return storageType;
+    }
+
+    @Override
+    public int getStorageSizeGB() {
+        return storageSizeGB;
+    }
+
+    @Override
+    public String getGpu() {
+        return gpu;
+    }
+
+    @Override
+    public boolean isHasWiFi() {
+        return hasWiFi;
+    }
+
+    @Override
+    public boolean isHasBluetooth() {
+        return hasBluetooth;
+    }
+
+    @Override
+    public String getOperatingSystem() {
+        return operatingSystem;
+    }
+
+    @Override
+    public double getWeightKg() {
+        return weightKg;
+    }
 }
