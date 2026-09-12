@@ -61,6 +61,20 @@ public class Client {
         System.out.println("   " + laptop);
         System.out.println();
 
+        // Demonstrate validation
+        System.out.println("4. Demonstrating Validation:");
+        try {
+            new GamingComputerBuilder()
+                    .setCpu("") // Invalid: empty CPU
+                    .setRamSizeGB(16)
+                    .setStorageType("SSD")
+                    .setStorageSizeGB(512)
+                    .build();
+        } catch (IllegalStateException e) {
+            System.out.println("   Caught expected validation error: " + e.getMessage());
+        }
+        System.out.println();
+
         System.out.println("=== Demo Complete ===");
     }
 }
