@@ -1,18 +1,6 @@
 @startuml
-' Define skin parameters for better appearance
-skinparam classAttributeIconSize 0
-skinparam class {
-  BackgroundColor<<Product>> #E8F5E9
-  BackgroundColor<<Builder>> #FFF3E0
-  BackgroundColor<<ConcreteBuilder>> #E3F2FD
-  BackgroundColor<<Director>> #F3E5F5
-  BackgroundColor<<Client>> #FFEBEE
-  ArrowColor #757575
-  BorderColor #9E9E9E
-}
-
 ' Classes
-class Computer <<Product>> {
+class Computer {
   -cpu: String
   -ramSizeGB: int
   -storageType: String
@@ -35,7 +23,7 @@ class Computer <<Product>> {
   +toString(): String
 }
 
-class ComputerBuilder <<Builder>> {
+class ComputerBuilder {
   +setCpu(cpu: String): ComputerBuilder
   +setRamSizeGB(ramSizeGB: int): ComputerBuilder
   +setStorageType(storageType: String): ComputerBuilder
@@ -48,7 +36,7 @@ class ComputerBuilder <<Builder>> {
   +build(): Computer
 }
 
-class GamingComputerBuilder <<ConcreteBuilder>> {
+class GamingComputerBuilder {
   -cpu: String
   -ramSizeGB: int
   -storageType: String
@@ -72,7 +60,7 @@ class GamingComputerBuilder <<ConcreteBuilder>> {
   +build(): Computer
 }
 
-class OfficeComputerBuilder <<ConcreteBuilder>> {
+class OfficeComputerBuilder {
   -cpu: String
   -ramSizeGB: int
   -storageType: String
@@ -96,20 +84,20 @@ class OfficeComputerBuilder <<ConcreteBuilder>> {
   +build(): Computer
 }
 
-class ComputerDirector <<Director>> {
+class ComputerDirector {
   +ComputerDirector()
   +buildHighEndGamingComputer(builder: ComputerBuilder): Computer
   +buildBudgetOfficeComputer(builder: ComputerBuilder): Computer
   +buildPortableLaptop(builder: ComputerBuilder): Computer
 }
 
-class Client <<Client>> {
+class Client {
   +main(args: String[]): void
 }
 
 ' Relationships
-ComputerBuilder <|.. GamingComputerBuilder : implements
-ComputerBuilder <|.. OfficeComputerBuilder : implements
+ComputerBuilder <|-- GamingComputerBuilder
+ComputerBuilder <|-- OfficeComputerBuilder
 ComputerBuilder ..> Computer : uses
 GamingComputerBuilder ..> Computer : creates
 OfficeComputerBuilder ..> Computer : creates
@@ -118,5 +106,4 @@ Client ..> GamingComputerBuilder : uses
 Client ..> OfficeComputerBuilder : uses
 Client ..> ComputerDirector : uses
 Client ..> Computer : uses
-
 @enduml
